@@ -13,9 +13,9 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
     updatable=pygame.sprite.Group()
     drawable=pygame.sprite.Group()
-    shots=pygame.sprite.Group()
     asteroids=pygame.sprite.Group()
-    Shot.containers=(shots,updatable,drawable)
+    shots=pygame.sprite.Group()
+    Shot.containers=(shots)
     Player.containers=(updatable,drawable)
     Asteroid.containers=(asteroids,updatable,drawable)
     AsteroidField.containers=(updatable)
@@ -38,12 +38,6 @@ def main():
                 log_event("player_hit")
                 print ("Game Over")
                 sys.exit()
-        for ast in asteroids:
-            for sh  in shots:
-                if ast.collides_with(sh)==True:
-                    log_event("asteroid_shot")
-                    sh.kill()
-                    ast.split()
         pygame.display.flip()
 
 
